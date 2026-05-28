@@ -1,4 +1,4 @@
-# HydraTree-releases
+# HydraTree-releases (its POC now / not yet ready to use)
 
 Public **binary-only** repository for [HydraTree](https://hydratree.xyz) desktop installers.
 
