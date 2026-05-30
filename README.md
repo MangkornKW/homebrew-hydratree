@@ -2,7 +2,6 @@
 
 Public **binary-only** repository for [HydraTree](https://hydratree.xyz) desktop installers.
 
-- **Source code** lives in the private [`MangkornKW/HydraTree`](https://github.com/MangkornKW/HydraTree) repository.
 - **This repo** holds GitHub Releases only: `.dmg`, `.exe`, `.zip`, and auto-update manifests (`latest-mac.yml`, `latest.yml`).
 - Releases are published automatically by GitHub Actions when a version tag is pushed to the private source repo.
 
