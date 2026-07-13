@@ -9,10 +9,17 @@ cask "hydratree" do
 
   app "HydraTree.app"
 
-  # Automatically remove Gatekeeper quarantine block after extraction
+  # Unsigned Electron builds: strip quarantine, then ad-hoc re-sign so macOS won't
+  # kill the app with "Code Signature Invalid" (see scripts/install-mac-unsigned.sh).
   postflight do
+    app_bundle = "#{appdir}/HydraTree.app"
+
     system_command "/usr/bin/xattr",
-                   args: ["-cr", "#{staged_path}/HydraTree.app"],
+                   args: ["-cr", app_bundle],
+                   sudo: false
+
+    system_command "/usr/bin/codesign",
+                   args: ["--force", "--deep", "--sign", "-", app_bundle],
                    sudo: false
   end
 end
