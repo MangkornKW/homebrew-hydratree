@@ -12,10 +12,64 @@ Latest installers: **[Releases](https://github.com/MangkornKW/homebrew-hydratree
 Or use the landing page: **https://hydratree.xyz/download**
 
 ### Homebrew (macOS)
-You can install HydraTree directly via our official tap. This will automatically handle Gatekeeper permissions for you:
+
+Recommended install path on macOS. The cask runs a short **postflight** after install (`xattr` + ad-hoc `codesign`) so the unsigned Electron app launches cleanly on recent macOS versions.
+
+#### Install
+
 ```bash
 brew install --cask MangkornKW/hydratree/hydratree
 ```
+
+Open the app:
+
+```bash
+open -a HydraTree
+```
+
+#### Update
+
+```bash
+brew update
+brew upgrade --cask MangkornKW/hydratree/hydratree
+```
+
+#### Uninstall
+
+```bash
+brew uninstall --cask hydratree
+```
+
+If `HydraTree.app` is still in Applications:
+
+```bash
+rm -rf /Applications/HydraTree.app
+```
+
+#### Reinstall (when upgrade fails or the app is broken)
+
+```bash
+brew uninstall --cask hydratree
+rm -rf /Applications/HydraTree.app
+brew install --cask MangkornKW/hydratree/hydratree
+open -a HydraTree
+```
+
+#### Check installed version
+
+```bash
+brew info --cask hydratree
+```
+
+#### First launch notes
+
+| Situation | What to do |
+|-----------|------------|
+| **Keychain prompt** (“HydraTree Safe Storage”) | Click **Allow** and enter your Mac login password. Used to store account tokens securely. |
+| **GitHub / Git operations fail** | Add a GitHub token in HydraTree → **Settings → Accounts** before fetch, clone, or push. |
+| **macOS blocks the app** | Right-click HydraTree in Applications → **Open**, or System Settings → Privacy & Security → **Open Anyway**. |
+
+**Version note:** Use **v0.1.6** or later. Older cask builds (e.g. v0.1.5) could show a blank window or Git auth errors after install; upgrade with `brew upgrade --cask MangkornKW/hydratree/hydratree`.
 
 ### Direct Download Links (Latest)
 | Platform | File |
@@ -57,7 +111,7 @@ You will not find application source here — only installers, Cask files, and u
 **What to check before you install**
 
 - The release is under **`MangkornKW/homebrew-hydratree`**, not a similarly named fork.
-- Asset names match the table above (`HydraTree-mac.dmg`, `HydraTree-win.exe`, `HydraTree-mac-app.zip`).
+- Asset names match the table above (`HydraTree-mac.dmg`, `HydraTree-win.exe`, `HydraTree-mac.zip`).
 - The version on the [Releases](https://github.com/MangkornKW/homebrew-hydratree/releases) page matches what the website lists.
 
 On macOS, if you do not use Homebrew and download the `.dmg` manually, Gatekeeper may ask you to confirm the app the first time you open it — this is normal for apps distributed outside the Mac App Store.
