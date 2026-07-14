@@ -1,6 +1,6 @@
 cask "hydratree" do
-  version "0.1.5"
-  sha256 "36a083d5a75b842bbc2bceb9a161b17e35bf4b6af70ad75781c970cf3c6d3250"
+  version "0.1.6"
+  sha256 "0dce39c09de1d05f780b220687bb8d0113045ef8e6cfdfc7921ada4683f1d835"
 
   url "https://github.com/MangkornKW/homebrew-hydratree/releases/download/v#{version}/HydraTree-mac.zip"
   name "HydraTree"
