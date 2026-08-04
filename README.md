@@ -66,10 +66,10 @@ brew info --cask hydratree
 | Situation | What to do |
 |-----------|------------|
 | **Keychain prompt** (“HydraTree Safe Storage”) | Click **Allow** and enter your Mac login password. Used to store account tokens securely. |
-| **GitHub / Git operations fail** | Add a GitHub token in HydraTree → **Settings → Accounts** before fetch, clone, or push. |
+| **Git operations fail** | Sign in first in HydraTree → **Settings → Accounts** — GitHub via OAuth or a personal access token, GitLab (including self-hosted) via a personal access token. Each repository is then bound to one account for fetch, clone, and push. |
 | **macOS blocks the app** | Right-click HydraTree in Applications → **Open**, or System Settings → Privacy & Security → **Open Anyway**. |
 
-**Version note:** Use **v0.1.6** or later. Older cask builds (e.g. v0.1.5) could show a blank window or Git auth errors after install; upgrade with `brew upgrade --cask MangkornKW/hydratree/hydratree`.
+**Version note:** Always install the current release. Very early cask builds (before v0.1.6) could show a blank window or Git auth errors; if you are on one of those, upgrade with `brew upgrade --cask MangkornKW/hydratree/hydratree`.
 
 ### Direct Download Links (Latest)
 | Platform | File |
