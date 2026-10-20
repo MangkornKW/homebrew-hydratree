@@ -5,7 +5,7 @@ cask "hydratree" do
   url "https://github.com/MangkornKW/homebrew-hydratree/releases/download/v#{version}/HydraTree-mac.zip"
   name "HydraTree"
   desc "Git client for managing multiple repositories"
-  homepage "https://github.com/MangkornKW/homebrew-hydratree"
+  homepage "https://hydratree.xyz"
 
   depends_on arch: :arm64
   depends_on macos: ">= :monterey"
@@ -25,4 +25,15 @@ cask "hydratree" do
                    args: ["--force", "--deep", "--sign", "-", app_bundle],
                    sudo: false
   end
+
+  zap trash: [
+    "~/Library/Application Support/HydraTree",
+    "~/Library/Caches/com.hydratree.app",
+    "~/Library/Caches/com.hydratree.app.ShipIt",
+    "~/Library/Caches/hydratree-updater",
+    "~/Library/HTTPStorages/com.hydratree.app",
+    "~/Library/Logs/HydraTree",
+    "~/Library/Preferences/com.hydratree.app.plist",
+    "~/Library/Saved Application State/com.hydratree.app.savedState",
+  ]
 end

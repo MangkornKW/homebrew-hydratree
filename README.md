@@ -3,7 +3,7 @@
 Public Homebrew Tap and Release repository for [HydraTree](https://hydratree.xyz) desktop installers.
 
 - **This repo** serves as a Homebrew Tap for macOS users and holds GitHub Releases: `.dmg`, `.exe`, `.zip`, and auto-update manifests (`latest-mac.yml`, `latest.yml`).
-- Releases are published automatically by GitHub Actions when a version tag is pushed to the private source repo.
+- Releases are built and uploaded by the maintainer from a Mac (see [How releases are produced](#trust--verification)).
 
 ## Download
 
@@ -39,6 +39,14 @@ brew upgrade --cask MangkornKW/hydratree/hydratree
 ```bash
 brew uninstall --cask hydratree
 ```
+
+To also remove HydraTree's settings, repository list and caches from `~/Library`:
+
+```bash
+brew uninstall --zap --cask hydratree
+```
+
+Signed-in accounts are kept in the macOS Keychain under **HydraTree Safe Storage**; delete that item in Keychain Access if you want them gone too.
 
 If `HydraTree.app` is still in Applications:
 
@@ -101,10 +109,12 @@ Treat any other mirror, file host, or fork as **unofficial** unless it clearly p
 
 **How releases are produced**
 
-1. A maintainer tags a version in the private `HydraTree` repo (for example `v0.1.3`).
-2. GitHub Actions builds macOS and Windows artifacts.
-3. `electron-builder` uploads those files to **this** public repo only.
-4. The Homebrew Tap (`Casks/hydratree.rb`) is automatically updated with the latest `SHA256` hash.
+1. The maintainer runs the release script in the private `HydraTree` repo on a Mac, from a commit already pushed to its `master` branch.
+2. The script runs the checks and tests, then builds the macOS app and a cross-built Windows x64 installer on that Mac.
+3. It uploads exactly those files and their update manifests to a release on **this** public repo, with the source commit SHA in the release notes.
+4. It updates `Casks/hydratree.rb` here with the new version and `SHA256`.
+
+The macOS app is ad-hoc signed and not notarized, and the Windows installer is not code-signed, so macOS and Windows SmartScreen may ask you to confirm the first launch.
 
 You will not find application source here — only installers, Cask files, and update metadata. That is expected.
 
